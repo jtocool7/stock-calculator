@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  *{
+     
+        margin: 0;
+        padding: 0;
+        font-family:calibri;
+      user-select:none;
+  }
+  #master{
+     height: 100%;
+        width: 100%;
+     background-size: cover;
+     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://jooinn.com/images/mountain-ranges-covered-in-snow-2.jpg");
+
+        background-position: center;
+       
+        position: absolute;
+      
+  }
+  
+  #title{
+    position:absolute;
+    font-size:40px;
+    background: linear-gradient(to right, #39ff14, #00ffff);
+    -webkit-text-fill-color: transparent; 
+    -webkit-background-clip: text; 
+    position:absolute;
+    left:40px;
+z-index:1;
+ 
+  }
+  
+  .hide{
+    display:none;
+  }
+  
+  #num1{
+    position:absolute;
+    top:350px;
+    width:250px;
+    height:50px;
+    left:100px;
+    border-radius:20px;
+    z-index:1;
+  }
+  
+   #num2{
+    position:absolute;
+    top:350px;
+    width:250px;
+    height:50px;
+    left:450px;
+    border-radius:20px;
+    z-index:1;
+  }
+  
+  #calculate{
+    position:absolute;
+    z-index:1;
+    top:500px;
+    width:250px;
+    height:50px;
+    border-radius:25px;
+    left:275px;
+     
+   
+  }
+  
+  #load{
+    position:absolute;
+    z-index:1;
+    top:250px;
+    left:300px;
+  }
+  
+  #inbut{
+     background: linear-gradient(to right, #39ff14, #00ffff);
+    -webkit-text-fill-color: transparent; 
+    -webkit-background-clip: text; 
+    font-size:20px;
+  }
+  
+  #result{
+    z-index:1;
+    position:absolute;
+    left:150px;
+    top:320px;
+    font-size:50px;
+    background: linear-gradient(to right, #39ff14, #00ffff);
+    -webkit-text-fill-color: transparent; 
+    -webkit-background-clip: text; 
+  }
+ 
+  </style>
+</head>
+<body>
+
+<div id=div1>  
+<p id=title>
+Stock Market Increase/Decrease Calculator
+
+</p>  
+
+<input id=num1 placeholder="                                  1st Number">
+<input id=num2 placeholder="                                  2nd Number">
+<button id=calculate >
+<p id=inbut onclick=next()>
+Calculate
+</p>
+</button>
+</div>
+
+
+<img id=load class=hide src="https://www.smithson.co/wp-content/uploads/2020/06/loader.gif">
+
+<div class=hide  id=result>
+
+</div>
+<div id=master>
+</div>
+
+ <script>
+ //var name = window.prompt('what is your name?');
+ var time = 0;
+ var timetime = false;
+ 
+var difference = ((numberTwo - numberOne) / numberOne) * 100;
+  var roundedPercent = Math.round(100 * difference) / 100;
+
+
+var numberOne = document.getElementById('num1').value
+var numberTwo = document.getElementById('num2').value
+
+
+
+ function next(){
+ div1.classList.add('hide');
+ load.classList.remove('hide');
+
+ timetime = true;
+ 
+ var difference = ((num2.value - num1.value) / num1.value) * 100;
+  var roundedPercent = Math.round(100 * difference) / 100;
+  if (isNaN(roundedPercent)) {
+    result.innerHTML = "This is not a number sorry";
+  } else if (roundedPercent === 0) {
+    result.innerHTML = "There Has Been No Change"
+  } else if (roundedPercent > 0) {
+  result.innerHTML = "Your Stock Has Went Up By " + difference + "%"
+  } else if (roundedPercent < 0) {
+   result.innerHTML = "Your Stock Has Gone Down By " + difference + "%"
+  } else {
+    result.innerHtml = "An Error Has Happend Please Refresh Your Page."
+  }
+   
+
+ }
+ 
+ function calculate(num1, num2) {
+ 
+}
+ 
+ function loop(){
+ requestAnimationFrame(loop);
+ if(timetime == true){
+ time += 1
+
+ }
+ if(time >= 230){
+ load.classList.add('hide');
+ result.classList.remove('hide');
+ }
+console.log();
+ }
+  
+ loop()
+ </script> 
+</body>
+</html>
